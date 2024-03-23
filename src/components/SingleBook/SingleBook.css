@@ -1,0 +1,11 @@
+.card-book-box {
+    min-height: 555px;
+}
+
+img.card-book-img {
+    max-height: 470px;
+}
+
+.card-text {
+    color: black;
+}
