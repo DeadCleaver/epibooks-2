@@ -83,11 +83,13 @@ async function deleteComment(commentId) {
   }
 };
 
+
+
   return (
     <>
       <Container className='border shadow rounded'>
         <h3 className='text-center my-2'>Comments</h3>
-        {latestRelease && <div><CommentList2 comments={comments}  onRemoveComment={deleteComment} />
+        {latestRelease && <div><CommentList2 comments={comments}  onRemoveComment={deleteComment} getComments={getComments} />
         <AddComment2 onAddComment={addComment}/></div>}
 
       </Container>
