@@ -1,9 +1,9 @@
 .card-book-box {
-    min-height: 555px;
+    min-height: 480px;
 }
 
 img.card-book-img {
-    max-height: 470px;
+    max-height: 420px;
 }
 
 .card-text {
