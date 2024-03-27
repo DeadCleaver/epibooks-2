@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 
-export default function AddComment2({ onAddComment }) {
+export default function AddComment({ onAddComment }) {
   const [newComment, setNewComment] = useState(``);
   const [newRating, setNewRating] = useState(``);
 

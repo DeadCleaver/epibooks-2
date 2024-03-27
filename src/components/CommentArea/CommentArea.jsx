@@ -1,20 +1,21 @@
 import React from 'react'
 import { useState, useEffect, useContext } from 'react'
-import { Container, Stack } from 'react-bootstrap'
-import { LatestRelease } from '../../contex/LatestRelease/LatestRelease'
-import CommentList2 from './CommentList2/CommentList2';
-import AddComment2 from './AddComment2/AddComment2';
+import { Container, Spinner } from 'react-bootstrap'
+import CommentList from './CommentList/CommentList';
+import AddComment from './AddComment/AddComment';
 
-export default function CommentArea2() {
+export default function CommentArea({latestRelease}) {
 
   const bookApi = `https://striveschool-api.herokuapp.com/api/`;
   const authToken = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY1NDExMDdiZWEzMTAwMWEyZGYyZGIiLCJpYXQiOjE3MTA1NzE3OTMsImV4cCI6MTcxMTc4MTM5M30.DopAh1Mek9bSIzqCU-4FAeczLM_hQX41K_BrLTxOBp0`;
-  const {latestRelease} = useContext(LatestRelease);
 
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   async function getComments() { 
+    setIsLoading(true)
+    console.log(latestRelease);
 
     if (latestRelease) {
       try {
@@ -32,6 +33,7 @@ export default function CommentArea2() {
         alert(`Error fetching comments: `, error);
       }
     }
+    setIsLoading(false);
   };
 
 
@@ -89,8 +91,9 @@ async function deleteComment(commentId) {
     <>
       <Container className='border shadow rounded'>
         <h3 className='text-center my-2'>Comments</h3>
-        {latestRelease && <div><CommentList2 comments={comments}  onRemoveComment={deleteComment} getComments={getComments} />
-        <AddComment2 onAddComment={addComment}/></div>}
+        {isLoading &&  <div className='d-flex justify-content-center'><Spinner animation="border" variant="warning" /></div>}
+        {latestRelease && <div><CommentList comments={comments}  onRemoveComment={deleteComment} getComments={getComments} />
+        <AddComment onAddComment={addComment}/></div>}
 
       </Container>
     </>

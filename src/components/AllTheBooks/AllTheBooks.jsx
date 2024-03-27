@@ -1,25 +1,33 @@
 import React from "react";
-import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import SingleBook from "../SingleBook/SingleBook";
-import CommentArea2 from "../CommentArea2/CommentArea2";
+import CommentArea from "../CommentArea/CommentArea";
+import Wellcome from "../Wellcome/Wellcome";
+import { useContext } from "react";
+import { LatestRelease } from "../../contex/LatestRelease/LatestRelease";
 
 export default function AllTheBooks({ books }) {
 
+  const {latestRelease} = useContext(LatestRelease);
+
+
   return (
     <>
-      <Container className="mt-1">
+      <Wellcome/>     
+     <Container className="mt-1">
         <Row>
-        <Col xs={7}>
-          <Row sm={1} md={2} lg={3} className="g-2">
-            {books.map((book) => (
-              <Col key={book.asin}><SingleBook bookdata={book} /></Col>
-            ))}
-          </Row>
-        </Col>
-        <Col xs={5}>
-            <CommentArea2></CommentArea2>
-        </Col>
+          <Col xs={6} lg={8}>
+            <Row xs={1} lg={2} xl={3} className="g-2">
+              {books.map((book) => (
+                <Col key={book.asin}>
+                  <SingleBook bookdata={book} />
+                </Col>
+              ))}
+            </Row>
+          </Col>
+          <Col xs={6} lg={4}>
+            <CommentArea latestRelease={latestRelease}/>
+          </Col>
         </Row>
       </Container>
     </>

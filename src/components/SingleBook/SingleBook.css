@@ -1,9 +1,13 @@
-.card-book-box {
+/* .card-book-box {
     min-height: 480px;
-}
+} */
 
 img.card-book-img {
-    max-height: 420px;
+    height: 420px;
+}
+
+.card-book-body {
+    height: 130px;
 }
 
 .card-text {

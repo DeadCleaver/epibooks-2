@@ -1,9 +1,9 @@
 import React from "react";
 import { Accordion, Button, Form } from "react-bootstrap";
-import "./SingleComment2.css";
+import "./SingleComment.css";
 import { useState } from "react";
 
-export default function SingleComment2({
+export default function SingleComment({
   commentdata,
   index,
   onRemoveComment,

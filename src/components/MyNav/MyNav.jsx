@@ -5,10 +5,12 @@ import {
   Navbar,
   InputGroup,
   Form,
-  Button
+  Button,
 } from "react-bootstrap";
 import { useState } from "react";
 import { Theme } from "../../contex/Theme/Theme";
+import { IoMdBook } from "react-icons/io";
+import "./MyNav.css"
 
 export default function MyNav({ onSearchBook, onClearSearch }) {
   const menuitems = ["Home", "About", "Browse"];
@@ -23,7 +25,9 @@ export default function MyNav({ onSearchBook, onClearSearch }) {
         className="shadow sticky-top"
       >
         <Container>
-          <Navbar.Brand href="#home">EpiBOOKS</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <IoMdBook/>
+          </Navbar.Brand>
           <Nav>
             {menuitems.map((item, index) => (
               <Nav.Link key={index} href="#">
