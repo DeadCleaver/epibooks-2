@@ -3,14 +3,15 @@ import {
   Container,
   Nav,
   Navbar,
-  InputGroup,
+  InputGroup, NavDropdown,
+
   Form,
   Button,
 } from "react-bootstrap";
 import { useState } from "react";
 import { Theme } from "../../contex/Theme/Theme";
 import { IoMdBook } from "react-icons/io";
-import "./MyNav.css"
+import "./MyNav.css";
 
 export default function MyNav({ onSearchBook, onClearSearch }) {
   const menuitems = ["Home", "About", "Browse"];
@@ -20,13 +21,73 @@ export default function MyNav({ onSearchBook, onClearSearch }) {
   return (
     <>
       <Navbar
+        expand="lg"
         bg={theme === "dark" ? "dark" : "warning"}
         data-bs-theme={theme === "dark" ? "dark" : "light"}
         className="shadow sticky-top"
       >
         <Container>
           <Navbar.Brand href="#home">
-            <IoMdBook/>
+            <IoMdBook />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              {menuitems.map((item, index) => (
+                <Nav.Link key={index} href="#">
+                  {item}
+                </Nav.Link>
+              ))}
+              <NavDropdown title="Options" id="navbarScrollingDropdown">
+                <NavDropdown.Item
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                >
+                  Change Theme
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+
+            <Form className="d-flex">
+              <InputGroup>
+              <Form.Control
+                placeholder="Search for a book title"
+                aria-label="Search for a book title"
+                aria-describedby="basic-addon2"
+                value={searchField}
+                onChange={(e) => setSearchField(e.target.value)}
+              />
+              <Button
+                onClick={(e) => onSearchBook(searchField)}
+                variant="outline-secondary"
+              >
+                Search
+              </Button>
+              <Button
+                onClick={(e) => onClearSearch()}
+                variant="outline-secondary"
+              >
+                Clear
+              </Button>
+              </InputGroup>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* vecchia */}
+
+      {/*  <Navbar
+        bg={theme === "dark" ? "dark" : "warning"}
+        data-bs-theme={theme === "dark" ? "dark" : "light"}
+        className="shadow sticky-top"
+      >
+        <Container>
+          <Navbar.Brand href="#home">
+            <IoMdBook /> <div>EpiBooks</div>
           </Navbar.Brand>
           <Nav>
             {menuitems.map((item, index) => (
@@ -68,7 +129,7 @@ export default function MyNav({ onSearchBook, onClearSearch }) {
             </Button>
           </InputGroup>
         </Container>
-      </Navbar>
+      </Navbar> */}
     </>
   );
 }
