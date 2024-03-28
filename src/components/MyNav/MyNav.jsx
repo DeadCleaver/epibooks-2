@@ -3,8 +3,8 @@ import {
   Container,
   Nav,
   Navbar,
-  InputGroup, NavDropdown,
-
+  InputGroup,
+  NavDropdown,
   Form,
   Button,
 } from "react-bootstrap";
@@ -12,12 +12,14 @@ import { useState } from "react";
 import { Theme } from "../../contex/Theme/Theme";
 import { IoMdBook, IoMdCloseCircleOutline, IoIosSearch } from "react-icons/io";
 import "./MyNav.css";
+import { useNavigate } from "react-router-dom";
 
 export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
   const menuitems = ["Home", "About", "Browse"];
   const [searchField, setSearchField] = useState("");
   const { theme, setTheme } = useContext(Theme);
 
+  const navigate = useNavigate();
 
   return (
     <>
@@ -28,7 +30,7 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
         className="shadow sticky-top"
       >
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#home" onClick={()=> navigate("/")}>
             <IoMdBook />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -52,31 +54,32 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
               </NavDropdown>
             </Nav>
 
-           {/*  <Form className="d-flex"> */}
+            {/*  <Form className="d-flex"> */}
 
-              {onHome && <InputGroup>
-              <Form.Control
-                placeholder="Search for a book title"
-                aria-label="Search for a book title"
-                aria-describedby="basic-addon2"
-                value={searchField}
-                onChange={(e) => setSearchField(e.target.value)}
-              />
-              <Button
-                onClick={(e) => onSearchBook(searchField)}
-                variant="outline-secondary"
-              >
-                <IoIosSearch />
-              </Button>
-              <Button
-                onClick={(e) => onClearSearch()}
-                variant="outline-secondary"
-              >
-                <IoMdCloseCircleOutline />
-
-              </Button>
-              </InputGroup>}
-           {/*  </Form> */}
+            {onHome && (
+              <InputGroup>
+                <Form.Control
+                  placeholder="Search for a book title"
+                  aria-label="Search for a book title"
+                  aria-describedby="basic-addon2"
+                  value={searchField}
+                  onChange={(e) => setSearchField(e.target.value)}
+                />
+                <Button
+                  onClick={(e) => onSearchBook(searchField)}
+                  variant="outline-secondary"
+                >
+                  <IoIosSearch />
+                </Button>
+                <Button
+                  onClick={(e) => onClearSearch()}
+                  variant="outline-secondary"
+                >
+                  <IoMdCloseCircleOutline />
+                </Button>
+              </InputGroup>
+            )}
+            {/*  </Form> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -1,9 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import horror from "./data/horror.json";
-import MyNav from "./components/MyNav/MyNav";
-import AllTheBooks from "./components/AllTheBooks/AllTheBooks";
-import MyFooter from "./components/MyFooter/MyFooter";
 import { useEffect, useState } from "react";
 import ThemeProvider from "./contex/Theme/Theme";
 import LatestReleaseProvider from "./contex/LatestRelease/LatestRelease";
