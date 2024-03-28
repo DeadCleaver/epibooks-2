@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import CommentList from "../CommentArea/CommentList/CommentList";
 import { useState, useEffect } from "react";
 import CommentArea from "../CommentArea/CommentArea";
+import MyNav from "../MyNav/MyNav";
+import MyFooter from "../MyFooter/MyFooter";
 
 export default function BookDetails({ books }) {
   // Ottenere l'ID del libro dai parametri dell'URL
@@ -16,6 +18,8 @@ export default function BookDetails({ books }) {
   const { title, img, price } = currentBook;
 
   return (
+    <>
+    <MyNav onHome={false}/>
     <Container>
       <Row className="mt-5">
         <Col xs={6}>
@@ -32,5 +36,7 @@ export default function BookDetails({ books }) {
         </Col>
       </Row>
     </Container>
+    <MyFooter/>
+    </>
   );
 }

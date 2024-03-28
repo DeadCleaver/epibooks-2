@@ -77,7 +77,7 @@ export default function SingleComment({
         </div> */}
         {editMode ? (
           <Form>
-            <Form.Group controlId="editedComment">
+            <Form.Group controlId="editedComment" className="mb-3">
               <Form.Label>Comment</Form.Label>
               <Form.Control
                 type="text"
@@ -85,7 +85,7 @@ export default function SingleComment({
                 onChange={(e) => setEditedComment(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="editedRate">
+            <Form.Group controlId="editedRate" className="mb-3">
               <Form.Label>Rating:</Form.Label>
               <Form.Control
                 type="number"

@@ -10,13 +10,14 @@ import {
 } from "react-bootstrap";
 import { useState } from "react";
 import { Theme } from "../../contex/Theme/Theme";
-import { IoMdBook } from "react-icons/io";
+import { IoMdBook, IoMdCloseCircleOutline, IoIosSearch } from "react-icons/io";
 import "./MyNav.css";
 
-export default function MyNav({ onSearchBook, onClearSearch }) {
+export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
   const menuitems = ["Home", "About", "Browse"];
   const [searchField, setSearchField] = useState("");
   const { theme, setTheme } = useContext(Theme);
+
 
   return (
     <>
@@ -33,7 +34,7 @@ export default function MyNav({ onSearchBook, onClearSearch }) {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
-              className="me-auto my-2 my-lg-0"
+              className="me-5 my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
@@ -51,8 +52,9 @@ export default function MyNav({ onSearchBook, onClearSearch }) {
               </NavDropdown>
             </Nav>
 
-            <Form className="d-flex">
-              <InputGroup>
+           {/*  <Form className="d-flex"> */}
+
+              {onHome && <InputGroup>
               <Form.Control
                 placeholder="Search for a book title"
                 aria-label="Search for a book title"
@@ -64,16 +66,17 @@ export default function MyNav({ onSearchBook, onClearSearch }) {
                 onClick={(e) => onSearchBook(searchField)}
                 variant="outline-secondary"
               >
-                Search
+                <IoIosSearch />
               </Button>
               <Button
                 onClick={(e) => onClearSearch()}
                 variant="outline-secondary"
               >
-                Clear
+                <IoMdCloseCircleOutline />
+
               </Button>
-              </InputGroup>
-            </Form>
+              </InputGroup>}
+           {/*  </Form> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>

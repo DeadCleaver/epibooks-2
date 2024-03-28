@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 import { useState } from "react";
 
 export default function AddComment({ onAddComment }) {
@@ -16,7 +16,7 @@ export default function AddComment({ onAddComment }) {
   };
 
   return (
-    <>
+    <Card border="light" className="p-2">
       <Form onSubmit={submitComment}>
         <Form.Group className="mb-3">
           <Form.Control
@@ -37,16 +37,18 @@ export default function AddComment({ onAddComment }) {
             onChange={(e) => setNewRating(e.target.value)}
           />
         </Form.Group>
+        <div className="d-flex justify-content-center">
         <Button
           className="mb-3"
-          variant="primary"
+          variant="outline-primary"
           type="submit"
           size="sm"
           onClick={submitComment}
         >
           Add Comment
         </Button>
+        </div>
       </Form>
-    </>
+    </Card>
   );
 }
