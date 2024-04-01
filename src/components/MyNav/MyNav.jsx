@@ -30,8 +30,11 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
         className="shadow sticky-top"
       >
         <Container>
-          <Navbar.Brand href="#home" onClick={()=> navigate("/")}>
+          <Navbar.Brand href="#home" onClick={() => navigate("/")}>
+            <div className="d-flex">
             <IoMdBook />
+            <h6 className="ms-2 mb-0">EPIBOOKS</h6>
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

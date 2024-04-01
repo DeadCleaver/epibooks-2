@@ -10,10 +10,8 @@ export default function AllTheBooks({ books }) {
 
   const {latestRelease} = useContext(LatestRelease);
 
-
   return (
-    <>
-      <Wellcome/>     
+    <>    
      <Container className="mt-1">
         <Row>
           <Col xs={6} lg={8}>
@@ -26,7 +24,7 @@ export default function AllTheBooks({ books }) {
             </Row>
           </Col>
           <Col xs={6} lg={4}>
-            <CommentArea latestRelease={latestRelease}/>
+            <CommentArea asin={latestRelease}/>
           </Col>
         </Row>
       </Container>

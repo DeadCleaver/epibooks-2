@@ -1,8 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import CommentList from "../CommentArea/CommentList/CommentList";
-import { useState, useEffect } from "react";
 import CommentArea from "../CommentArea/CommentArea";
 import MyNav from "../MyNav/MyNav";
 import MyFooter from "../MyFooter/MyFooter";
@@ -32,7 +30,7 @@ export default function BookDetails({ books }) {
           </Card>
         </Col>
         <Col xs={6}>
-          <CommentArea latestRelease={asin}/>
+          <CommentArea asin={asin}/>
         </Col>
       </Row>
     </Container>

@@ -11,7 +11,7 @@ export default function SingleComment({
 }) {
   const { _id, author, rate, comment } = commentdata;
   const bookApi = `https://striveschool-api.herokuapp.com/api/`;
-  const authToken = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY1NDExMDdiZWEzMTAwMWEyZGYyZGIiLCJpYXQiOjE3MTA1NzE3OTMsImV4cCI6MTcxMTc4MTM5M30.DopAh1Mek9bSIzqCU-4FAeczLM_hQX41K_BrLTxOBp0`;
+  const authToken = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY1NDExMDdiZWEzMTAwMWEyZGYyZGIiLCJpYXQiOjE3MTE3ODU0OTksImV4cCI6MTcxMjk5NTA5OX0.LI0we1aoWFVkNOJhX5uNNckep5QfJ_mxbrArhaKAOKI`;
 
 
   /* per l'edit */

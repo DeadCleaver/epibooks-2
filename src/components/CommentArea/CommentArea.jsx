@@ -6,9 +6,11 @@ import AddComment from "./AddComment/AddComment";
 import { Theme } from "../../contex/Theme/Theme";
 
 
-export default function CommentArea({ latestRelease }) {
+export default function CommentArea({ asin }) {
   const bookApi = `https://striveschool-api.herokuapp.com/api/`;
-  const authToken = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY1NDExMDdiZWEzMTAwMWEyZGYyZGIiLCJpYXQiOjE3MTA1NzE3OTMsImV4cCI6MTcxMTc4MTM5M30.DopAh1Mek9bSIzqCU-4FAeczLM_hQX41K_BrLTxOBp0`;
+/*   const authToken = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY1NDExMDdiZWEzMTAwMWEyZGYyZGIiLCJpYXQiOjE3MTA1NzE3OTMsImV4cCI6MTcxMTc4MTM5M30.DopAh1Mek9bSIzqCU-4FAeczLM_hQX41K_BrLTxOBp0`;
+ */
+  const authToken = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY1NDExMDdiZWEzMTAwMWEyZGYyZGIiLCJpYXQiOjE3MTE3ODU0OTksImV4cCI6MTcxMjk5NTA5OX0.LI0we1aoWFVkNOJhX5uNNckep5QfJ_mxbrArhaKAOKI`
 
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,12 +18,12 @@ export default function CommentArea({ latestRelease }) {
 
   async function getComments() {
     setIsLoading(true);
-    console.log(latestRelease);
-
-    if (latestRelease) {
+    console.log(asin);
+    
+    if (asin) {
       try {
         const response = await fetch(
-          `${bookApi}books/${latestRelease}/comments/`,
+          `${bookApi}books/${asin}/comments/`,
           {
             headers: {
               Authorization: authToken,
@@ -34,7 +36,7 @@ export default function CommentArea({ latestRelease }) {
         const commentsData = await response.json();
         setComments(commentsData);
       } catch (error) {
-        alert(`Error fetching comments: `, error);
+        alert(`Error fetching comments: ` + error);
       }
     }
     setIsLoading(false);
@@ -42,7 +44,7 @@ export default function CommentArea({ latestRelease }) {
 
   useEffect(() => {
     getComments();
-  }, [latestRelease]);
+  }, [asin]);
 
   async function addComment(newCommentData) {
     try {
@@ -55,7 +57,7 @@ export default function CommentArea({ latestRelease }) {
         body: JSON.stringify({
           comment: newCommentData.comment,
           rate: newCommentData.rate,
-          elementId: latestRelease,
+          elementId: asin,
         }),
       });
 
@@ -104,7 +106,7 @@ export default function CommentArea({ latestRelease }) {
             <Spinner animation="border" variant="warning" />
           </div>
         )}
-        {latestRelease && (
+        {asin && (
           <div>
             <CommentList
               comments={comments}
