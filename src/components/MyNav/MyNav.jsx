@@ -79,90 +79,67 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
                   Change Theme
                 </NavDropdown.Item>
               </NavDropdown>
+            </Nav>
 
-              </Nav>
-
-              {onHome && (
-                <InputGroup>
-                  <Form.Control
-                    placeholder="Search for a book title"
-                    aria-label="Search for a book title"
-                    aria-describedby="basic-addon2"
-                    value={searchField}
-                    onChange={(e) => setSearchField(e.target.value)}
-                  />
-                  <Button
-                    onClick={(e) => onSearchBook(searchField)}
-                    variant="outline-secondary"
-                  >
-                    <IoIosSearch />
-                  </Button>
-                  <Button
-                    onClick={(e) => onClearSearch()}
-                    variant="outline-secondary"
-                  >
-                    <IoMdCloseCircleOutline />
-                  </Button>
-                </InputGroup>
-              )}
-              
-              
+            {onHome && (
+              <InputGroup className="d-none d-lg-flex">
+                <Form.Control
+                  placeholder="Search for a book title"
+                  aria-label="Search for a book title"
+                  aria-describedby="basic-addon2"
+                  value={searchField}
+                  onChange={(e) => setSearchField(e.target.value)}
+                />
+                <Button
+                  onClick={(e) => onSearchBook(searchField)}
+                  variant="outline-secondary"
+                >
+                  <IoIosSearch />
+                </Button>
+                <Button
+                  onClick={(e) => onClearSearch()}
+                  variant="outline-secondary"
+                >
+                  <IoMdCloseCircleOutline />
+                </Button>
+              </InputGroup>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      {/* vecchia */}
-
-      {/*  <Navbar
-        bg={theme === "dark" ? "dark" : "warning"}
-        data-bs-theme={theme === "dark" ? "dark" : "light"}
-        className="shadow sticky-top"
-      >
-        <Container>
-          <Navbar.Brand href="#home">
-            <IoMdBook /> <div>EpiBooks</div>
-          </Navbar.Brand>
-          <Nav>
-            {menuitems.map((item, index) => (
-              <Nav.Link key={index} href="#">
-                {item}
-              </Nav.Link>
-            ))}
-          </Nav>
-
-          <InputGroup>
-            <Button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              variant="outline-secondary"
-              size="sm"
-            >
-              Change Theme
-            </Button>
-          </InputGroup>
-
-          <InputGroup>
-            <Form.Control
-              placeholder="Search for a book title"
-              aria-label="Search for a book title"
-              aria-describedby="basic-addon2"
-              value={searchField}
-              onChange={(e) => setSearchField(e.target.value)}
-            />
-            <Button
-              onClick={(e) => onSearchBook(searchField)}
-              variant="outline-secondary"
-            >
-              Search
-            </Button>
-            <Button
-              onClick={(e) => onClearSearch()}
-              variant="outline-secondary"
-            >
-              Clear
-            </Button>
-          </InputGroup>
-        </Container>
-      </Navbar> */}
+      {/* bar aggiuntiva  */}
+      {onHome && (
+        <Navbar
+          bg={theme === "dark" ? "dark" : "warning"}
+          data-bs-theme={theme === "dark" ? "dark" : "light"}
+          className="shadow fixed-bottom d-lg-none"
+        >
+          <Container>
+            <InputGroup>
+              <Form.Control
+                placeholder="Search for a book title"
+                aria-label="Search for a book title"
+                aria-describedby="basic-addon2"
+                value={searchField}
+                onChange={(e) => setSearchField(e.target.value)}
+              />
+              <Button
+                onClick={(e) => onSearchBook(searchField)}
+                variant="outline-secondary"
+              >
+                <IoIosSearch />
+              </Button>
+              <Button
+                onClick={(e) => onClearSearch()}
+                variant="outline-secondary"
+              >
+                <IoMdCloseCircleOutline />
+              </Button>
+            </InputGroup>
+          </Container>
+        </Navbar>
+      )}
     </>
   );
 }
