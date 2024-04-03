@@ -22,6 +22,7 @@ export default function Wellcome({changeGenre}) {
                 <option value="horror">Horror</option>
                 <option value="romance">Romance</option>
                 <option value="scifi">Science Fiction</option>
+                <option value="all">...all</option>
               </Form.Select>
             </Card.Text>
           </Card.Body>
