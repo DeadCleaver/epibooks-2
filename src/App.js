@@ -13,18 +13,11 @@ import NotFound from "./components/NotFound/NotFound";
 import BookDetails from "./components/BookDetails/BookDetails";
 import Home from "./components/Home/Home";
 
-/* COSE MANCANTI:
-- Spinner di caricamento negli oggetti (ora è su comment area, che è l'unica che fa la fetch)
-- Messaggi d'errore */
 
 function App() {
 
   const [bookList, setBookList] = useState(fantasy);
   const [genre, setGenre] = useState("Fantasy")
-
-/*   useEffect(() => {
-    setBookList(history);
-  }, []); */
 
   const changeGenre = (genre) => {
     setGenre(`${genre}`)

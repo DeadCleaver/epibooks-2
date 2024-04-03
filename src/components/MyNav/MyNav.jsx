@@ -32,8 +32,8 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
         <Container>
           <Navbar.Brand href="#home" onClick={() => navigate("/")}>
             <div className="d-flex">
-            <IoMdBook />
-            <h6 className="ms-2 mb-0">EPIBOOKS</h6>
+              <IoMdBook />
+              <h6 className="ms-2 mb-0">EPIBOOKS</h6>
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -48,7 +48,28 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
                   {item}
                 </Nav.Link>
               ))}
-              <NavDropdown title="Options" id="navbarScrollingDropdown">
+
+              {/* <NavDropdown title="Options" id="navbarScrollingDropdown">
+                <NavDropdown.Item
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                >
+                  Change Theme
+                </NavDropdown.Item>
+              </NavDropdown> */}
+
+              {/* VISUALIZZA solo un bottone quando la navbar è collapsed, o un menu con il cambio tema se è expanded */}
+              <Nav.Link
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="d-lg-none"
+              >
+                Change Theme
+              </Nav.Link>
+
+              <NavDropdown
+                title="Options"
+                id="navbarScrollingDropdown"
+                className="d-none d-lg-block"
+              >
                 <NavDropdown.Item
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
@@ -60,6 +81,9 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
             {/*  <Form className="d-flex"> */}
 
             {onHome && (
+              <InputGroup>
+              <Form.Label className="d-lg-none mb-0 d-flex justify-conent-center">
+                <p>search area</p></Form.Label>
               <InputGroup>
                 <Form.Control
                   placeholder="Search for a book title"
@@ -80,6 +104,7 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
                 >
                   <IoMdCloseCircleOutline />
                 </Button>
+              </InputGroup>
               </InputGroup>
             )}
             {/*  </Form> */}

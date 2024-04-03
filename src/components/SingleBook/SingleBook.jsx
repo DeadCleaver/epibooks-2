@@ -19,7 +19,6 @@ export default function SingleBook({ bookdata }) {
   const displayDetails = () => {
     navigate("/details/" + asin);
   }
-  
 
   return (
     <>

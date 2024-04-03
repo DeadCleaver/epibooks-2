@@ -29,7 +29,7 @@ export default function Home({books, selectedGenre, changeGenre}) {
   return (
     <>
     <MyNav onSearchBook={searchBook} onClearSearch={clearSearch} onHome={true}/>
-    <Wellcome changeGenre={changeGenre} data-testid="el-wellcome" /> 
+    <Wellcome changeGenre={changeGenre}/> 
     <Stack className='text-center mb-3'><h5>{selectedGenre ? `${selectedGenre.toUpperCase()}` : `FANTASY`}</h5></Stack>
     <AllTheBooks books={booklist}/>
     <MyFooter/>

@@ -2,13 +2,11 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import SingleBook from "../SingleBook/SingleBook";
 import CommentArea from "../CommentArea/CommentArea";
-import Wellcome from "../Wellcome/Wellcome";
 import { useContext } from "react";
 import { LatestRelease } from "../../contex/LatestRelease/LatestRelease";
 
 export default function AllTheBooks({ books }) {
-
-  const {latestRelease} = useContext(LatestRelease);
+  const latestRelease = useContext(LatestRelease);
 
   return (
     <>    
@@ -29,5 +27,5 @@ export default function AllTheBooks({ books }) {
         </Row>
       </Container>
     </>
-  );
+  )
 }

@@ -10,7 +10,7 @@ export default function Wellcome({changeGenre}) {
 
   return (
     <>
-      <Container className="mt-3">
+      <Container className="mt-3" data-testid="el-wellcome" >
         <Card border="warning">
           <Card.Body>
             <Card.Title>Wellcome in Epibooks</Card.Title>
