@@ -32,8 +32,8 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
         <Container>
           <Navbar.Brand href="#home" onClick={() => navigate("/")}>
             <div className="d-flex">
-            <IoMdBook />
-            <h6 className="ms-2 mb-0">EPIBOOKS</h6>
+              <IoMdBook />
+              <h6 className="ms-2 mb-0">EPIBOOKS</h6>
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -48,41 +48,65 @@ export default function MyNav({ onSearchBook, onClearSearch, onHome }) {
                   {item}
                 </Nav.Link>
               ))}
-              <NavDropdown title="Options" id="navbarScrollingDropdown">
+
+              {/* <NavDropdown title="Options" id="navbarScrollingDropdown">
+                <NavDropdown.Item
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                >
+                  Change Theme
+                </NavDropdown.Item>
+              </NavDropdown> */}
+
+              {/* bottone se la navbar è collapsed */}
+
+              <Nav.Link
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="d-lg-none"
+              >
+                Change Theme
+              </Nav.Link>
+
+              {/* bottone dropdown */}
+
+              <NavDropdown
+                title="Options"
+                id="navbarScrollingDropdown"
+                className="d-none d-lg-block"
+              >
                 <NavDropdown.Item
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
                   Change Theme
                 </NavDropdown.Item>
               </NavDropdown>
-            </Nav>
 
-            {/*  <Form className="d-flex"> */}
+              </Nav>
 
-            {onHome && (
-              <InputGroup>
-                <Form.Control
-                  placeholder="Search for a book title"
-                  aria-label="Search for a book title"
-                  aria-describedby="basic-addon2"
-                  value={searchField}
-                  onChange={(e) => setSearchField(e.target.value)}
-                />
-                <Button
-                  onClick={(e) => onSearchBook(searchField)}
-                  variant="outline-secondary"
-                >
-                  <IoIosSearch />
-                </Button>
-                <Button
-                  onClick={(e) => onClearSearch()}
-                  variant="outline-secondary"
-                >
-                  <IoMdCloseCircleOutline />
-                </Button>
-              </InputGroup>
-            )}
-            {/*  </Form> */}
+              {onHome && (
+                <InputGroup>
+                  <Form.Control
+                    placeholder="Search for a book title"
+                    aria-label="Search for a book title"
+                    aria-describedby="basic-addon2"
+                    value={searchField}
+                    onChange={(e) => setSearchField(e.target.value)}
+                  />
+                  <Button
+                    onClick={(e) => onSearchBook(searchField)}
+                    variant="outline-secondary"
+                  >
+                    <IoIosSearch />
+                  </Button>
+                  <Button
+                    onClick={(e) => onClearSearch()}
+                    variant="outline-secondary"
+                  >
+                    <IoMdCloseCircleOutline />
+                  </Button>
+                </InputGroup>
+              )}
+              
+              
           </Navbar.Collapse>
         </Container>
       </Navbar>
